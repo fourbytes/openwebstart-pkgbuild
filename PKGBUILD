@@ -13,7 +13,7 @@ arch=("x86_64")
 url="https://openwebstart.com"
 license=('GPL')
 groups=()
-depends=()
+depends=("java-runtime<18")
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -33,7 +33,7 @@ source=(
 md5sums=(
 	"879e7d8514c4c58ffcfbe9a7d05b5699"
 	"551218dd79f7600755d76ab733fdb5bc"
-	"40dcdc9897a8bb72c55b42a481813906"
+	"325214a1c96b12461190320cd2201bf7"
 	"1443e7e283bbf7461e9829eeffd5966a"
 )
 validpgpkeys=()
@@ -44,8 +44,8 @@ package() {
 	mkdir -p $pkgdir/usr/share/applications/
 	mkdir -p $pkgdir/usr/share/mime/packages/
 
-	ln -sf "opt/OpenWebStart/itw-settings" "$pkgdir/usr/local/bin/"
-	ln -sf "opt/OpenWebStart/javaws" "$pkgdir/usr/local/bin/"
+	ln -sf "$pkgdir/opt/OpenWebStart/itw-settings" "$pkgdir/usr/local/bin/"
+	ln -sf "$pkgdir/opt/OpenWebStart/javaws" "$pkgdir/usr/local/bin/"
 
 	install -Dm644 jnlp.xml $pkgdir/usr/share/mime/packages
 	install -Dm755 javaws.desktop $pkgdir/usr/share/applications
